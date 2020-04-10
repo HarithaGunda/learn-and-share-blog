@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button,Row,Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
+import { baseUrl } from '../shared/baseUrl';
 
 function RenderArticle({article}) {
     return (
@@ -19,7 +20,7 @@ function RenderArticle({article}) {
                 </Col>
             </Row>
             <p style={{marginTop:'20px',marginBottom:'20px',textAlign:'center'}}>
-            <img src={article.image} className="img-fluid" alt={article.title}/>
+            <img src={baseUrl+article.image} className="img-fluid" alt={article.title}/>
             </p>
             {article.isUpdated ? ( <p>This article was last updated on {article.lastupdated}</p> ) : ""}
             <p>{article.previewcontent}</p>
@@ -31,7 +32,7 @@ function RenderArticle({article}) {
 }
 function LoadArticles(props) {
     
-    const article=props.articles.map(article => {
+    const article=props.articles.articles.map(article => {
         return (
             <div key={article.id}>
                 <RenderArticle article={article} />
